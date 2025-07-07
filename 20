@@ -1,0 +1,115 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+
+int CheckMiniNumber(int Matrix1[3][3], short Rows, short Cols)
+{
+
+    int Min = Matrix1[0][0];
+
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+
+            if (Matrix1[i][j] < Min)
+            {
+                Min = Matrix1[i][j];
+            }
+            
+        }
+    }
+    return Min;
+
+
+}
+
+int CheckMaxNumber(int Matrix1[3][3], short Rows, short Cols)
+{
+    int Max = Matrix1[0][0];
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] > Max)
+            {
+                Max = Matrix1[i][j];
+            }
+        }
+    }
+    return Max;
+}
+
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {8,98,3}, {7,12,5}, {4,2,8} };
+
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+    cout << "Mini Number: ";
+    cout << CheckMiniNumber(Matrix1, 3, 3);
+    cout << "\n";
+    cout << "Max Number : ";
+    cout << CheckMaxNumber(Matrix1, 3, 3);
+
+  
+   
+    
+
+  
+    system("pause>0");
+
+
+
+
+    
+
+
+}
+

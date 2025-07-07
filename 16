@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+int checkSparseMatrix(int Matrix1[3][3],int Number, short Rows, short Cols)
+{
+
+    int NumberCount = 0;
+
+
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] == 0)
+            {
+                NumberCount++;
+            }
+        }
+    }
+    return NumberCount;
+
+}
+
+bool IsSparseMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+    short MatrixSize = Rows * Cols;
+
+    return(checkSparseMatrix(Matrix1, 0, 3, 3) >= ceil((float)MatrixSize / 2));
+}
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {0,0,0}, {0,5,5}, {5,0,5} };
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+
+    if (IsSparseMatrix(Matrix1, 3, 3))
+        cout << "Yes, It is Sparse. \n";
+    else
+        cout << "Not, It is NOT Sparse. \n";
+  
+
+    system("pause>0");
+
+
+
+
+    
+
+
+}
+

@@ -1,0 +1,109 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+bool IsNumberInMatrix(int Matrix1[3][3],int Number, short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] == Number)
+                return true;
+        }
+
+    }
+    return false;
+}
+
+
+void PrintIntersectedNumbers(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+{
+    int Number;
+
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            Number = Matrix1[i][j];
+                
+            if (IsNumberInMatrix(Matrix2,Number, Rows,Cols))
+            {  
+                cout << setw(3) << Number << "   ";
+            }
+        }
+    }
+}
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {8,9,3}, {7,2,5}, {4,1,8} };
+    int Matrix2[3][3] = { {4,7,3}, {1,9,5}, {1,7,3} };
+
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+    cout << "Matrix2 : \n";
+    PrintMatrix(Matrix2, 3, 3);
+    cout << "\n";
+
+  
+    cout << "The Increap Numbers: \n\n";
+    PrintIntersectedNumbers(Matrix1, Matrix2, 3, 3);
+    
+
+  
+    system("pause>0");
+
+
+
+
+    
+
+
+}
+

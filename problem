@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+int SumOfMatrix(int arr[3][3], short Rows, short Cols)
+{
+
+    int sum = 0;
+
+    for (int i = 0; i < Rows; i++)
+    {
+
+        for (int j = 0; j < Cols; j++)
+        {
+            sum += arr[i][j];
+        }
+
+    }
+
+    return sum;
+}
+
+bool IsIdentityMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (i == j && Matrix1[i][j] != 1)
+                return false;
+            else if (i != j && Matrix1[i][j] != 0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {1,0,0}, {0,1,0}, {0,0,1} };
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+    if (IsIdentityMatrix(Matrix1, 3, 3))
+    {
+        cout << "Yes, Matrix is Identity. \n";
+    }
+    else
+    {
+        cout << "No, Matrix is NOT Identity. \n";
+    }
+
+    system("pause>0");
+
+}
+

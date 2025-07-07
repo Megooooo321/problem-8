@@ -1,0 +1,103 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+int ReadPositiveNumber()
+{
+    int Number;
+    cout << "Enter the Number you Want Check: ";
+    cin >> Number;
+
+    return Number;
+
+}
+int CheckCountNumber(int Matrix1[3][3], short Rows, short Cols, int Number)
+{
+
+    int count = 0;
+
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Number == Matrix1[i][j])
+            {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {5,5,5}, {0,5,5}, {5,0,5} };
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+   
+    int SearchNumber = ReadPositiveNumber();
+
+
+    CheckCountNumber(Matrix1, 3, 3, SearchNumber);
+
+ 
+    cout << "The Number You Want Search is " << SearchNumber << "\nThe Count is: " << CheckCountNumber(Matrix1,3,3,SearchNumber) << endl;
+
+
+
+
+    system("pause>0");
+
+
+
+
+    
+
+
+}
+

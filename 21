@@ -1,0 +1,93 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+int RandomNumbers(int From,int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+
+}
+
+void fillMatrixWithOrderednumbers(int arr[3][3], short Rows, short Cols)
+{
+    
+            
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumbers(1,10);
+        }
+    }
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << "" << arr[i][j] << "    ";
+        }
+        cout << "\n";
+
+    }
+}
+
+bool IsPalindromMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+    for (int i = 0; i < Rows; i++)
+    {
+        for (int j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] != Matrix1[i][Cols - 1 - j])
+                return false;
+        }
+    }
+
+    return true;
+}
+
+
+
+int main()
+{
+
+    srand((unsigned)time(NULL));
+
+    int Matrix1[3][3] = { {8,5,8}, {7,1,7}, {4,2,4} };
+
+  
+    cout << "Matrix1 : \n";
+    PrintMatrix(Matrix1, 3, 3);
+    cout << "\n";
+
+  
+    if (IsPalindromMatrix(Matrix1, 3, 3))
+    {
+        cout << "Yes, This is Palindrom \n";
+    }
+    else
+    {
+        cout << "No, This is NOT Palindrom \n";
+    }
+
+  
+   
+    
+
+  
+    system("pause>0");
+
+
+
+
+    
+
+
+}
+

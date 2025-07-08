@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std; 
+
+
+
+
+void printfibacciByRecursion(short Number, int Prev1, int Prev2)
+{
+
+    int febNumber = 0;
+    if (Number > 0)
+    {
+        febNumber = Prev2 + Prev1;
+        Prev2 = Prev1;
+        Prev1 = febNumber;
+        cout << febNumber << "   ";
+
+    
+        printfibacciByRecursion(Number - 1, Prev1, Prev2);
+    }
+
+}
+
+string ReadString()
+{
+    string Text;
+    cout << "\nEnter the Text You Want Know \n";
+    getline(cin, Text);
+    return Text;
+}
+
+void PrintFirstLittreInWord(string Text)
+{
+    bool isFirstLittre = true;
+
+    cout << "\nFirst letters of this string: \n";
+    for (int i = 0; i < Text.length(); i++)
+    {
+        if (Text[i] != ' ' && isFirstLittre)
+        {
+            cout << Text[i] << "\n";
+        }
+
+        isFirstLittre = (Text[i] == ' ' ? true : false);
+    }
+}
+
+
+int main()
+{
+  
+
+    PrintFirstLittreInWord(ReadString());
+
+  
+    system("pause>0");
+}
+
